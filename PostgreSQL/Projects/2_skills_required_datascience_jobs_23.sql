@@ -1,17 +1,3 @@
-/* 
-Question 2: What are the skills required for top-paying data science roles? 
-
--- Recall top 10 highest paying job roles for Data Science from query 1 
--- Add skills labels
--- Why? to provide a detailed look at which high-paying jobs demand certain skills,
-allowing job seekers to understand which skils to develop to align with top salaries
-
-NOTES:
--- duplicate readings for job ID as more than 1 skill was required. 
--- temp table added as only referencing this table layout in this querry
-CT
-*/
-
 -- Top 10 highest paying Data Science roles 
 SELECT *
 FROM data_science_salaries
