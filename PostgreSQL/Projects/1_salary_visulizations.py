@@ -58,10 +58,44 @@ In labels, using f-string formatting to provide an integer value with '$' infron
 and creates a list of formatted strings for all bars in one container group.
 """
 
+# Fix to ensure all labels match correct bars
+bars = ax.patches  # Gets all bars regardless of hue
+
+# Add job location labels inside the center of each bar
+for bar, (_, row) in zip(bars, df_top_10_sorted.iterrows()):
+    location = row['job_location']
+    height = bar.get_height()
+    ax.text(
+        bar.get_x() + bar.get_width() / 2, # centers label horizontal center of the bar
+        height * 0.5,  # positioning from 10% height of bar to allow room for labels
+        location, # location as text
+        ha='center', # horizontal alignment = center
+        va='center', # vertical alaignment =  centered around the Y-coordinate (height* 10%)
+        rotation=90, # Rotates the label 90 degrees (vertical orientation).
+        fontsize=6,
+        color='black',
+        fontweight='bold'
+    )
+
+"""
+When looping through: zip(bars, df_top_10_sorted['job_location']) — it is assumed that bars 
+and df_top_10_sorted['job_location'] are in exact same order and alignment. However, when you call ax.bar(...)
+and use hue='job_title_short', Seaborn actually creates grouped bars and manages them as multiple sets, 
+so the bars list only includes one bar per hue group. This meant zip(bars, df_top_10_sorted['job_location']) 
+ may only loop through a subset of all rows, usually just the second hue category 
+ (in this case "Senior Data Scientist"), so only their locations were drawn. Zip was aimed to pair the bars and the job
+ title together.
+
+ To attend to this issue, paired together each bar from the chart (ax.patches) and the corresponding data row 
+ from sorted dataframe (df_top_10_sorted.iterrows()), so that the bar's height and x-position to place text and
+ use the row's corresponding 'job_location' as the content of the label. 
+
+"""
+
 # Replace x-axis tick labels with just the company names instead of Job1..Job10
 ax.set_xticklabels(df_top_10['company_name'], rotation=45, ha='right')
 
-# Format y-axis labels for increased readability
+# Format y-axis labels for increased readability of units
 ax.set_yticklabels([f'${int(y/1000)}K' for y in ax.get_yticks()])
 
 # Formatting
@@ -72,3 +106,17 @@ plt.xticks(ha='right'),
 plt.legend(title='Job Title')
 plt.tight_layout()
 plt.show()
+ 
+
+ ## Salary by seniority
+
+# Importing libaries
+import pandas as pd
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# Read in CSV from path
+df_seniority = pd.read_csv('PostgreSQL/Projects/data/1_salary_by_seniority.csv')
+# Inspect data
+print(df_seniority)         # Shows all 10 rows
+print(df_seniority.columns)        # Lists column names

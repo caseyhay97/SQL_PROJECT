@@ -14,6 +14,8 @@ OUTPUTS:
 1) created "CTE" (virtual table) joining company name  to the job posting table, discarding any null salary values and filtered to Data science jobs to satifiy investigation.
 
 2) the top 10 highest paying data science jobs.
+Selby J, Glocomms and Netflix appear multiple times, repeated entries from the same companies in the top 10 can suggest either a high volume of lucrative postings from those employers and/or a range of similar high-salary roles in their data science teams. Based on plot Some Senior roles (e.g., MSP Staffing, WhatsApp) offer lower pay than some non-Senior ones (e.g., East River Electric).This suggests that seniority titles alone aren't always tied to pay — employer, location, and job description might weigh more heavily. 
+For an inital inspection, there were genreal insights gained, but a deeper investigation of salary was required to observer/measure degree of influence of Senority, Company and Location have towards salary of data scientist. 
 
 3) salaries according to senority of data science job postiion. 
 
@@ -55,7 +57,8 @@ CT
 # The Analysis
 
 Rememeber to make comments sych as:
-📊 Insight: “Senior roles earn on average 60% more than junior roles; Company X pays 20% above the market average.”
+Insight: “Senior roles earn on average 60% more than junior roles; Company X pays 20% above the market average.”
+
 # What I learned
 # Conclusions 
 
