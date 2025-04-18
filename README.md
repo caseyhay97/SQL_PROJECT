@@ -14,10 +14,15 @@ OUTPUTS:
 1) created "CTE" (virtual table) joining company name  to the job posting table, discarding any null salary values and filtered to Data science jobs to satifiy investigation.
 
 2) the top 10 highest paying data science jobs.
-Selby J, Glocomms and Netflix appear multiple times, repeated entries from the same companies in the top 10 can suggest either a high volume of lucrative postings from those employers and/or a range of similar high-salary roles in their data science teams. Based on plot Some Senior roles (e.g., MSP Staffing, WhatsApp) offer lower pay than some non-Senior ones (e.g., East River Electric).This suggests that seniority titles alone aren't always tied to pay — employer, location, and job description might weigh more heavily. 
+OUTPUT = Barplot (aveage salary, company, with location in bar)
+
+Analysis of results: Selby J, Glocomms and Netflix appear multiple times, repeated entries from the same companies in the top 10 can suggest either a high volume of lucrative postings from those employers and/or a range of similar high-salary roles in their data science teams. Based on plot Some Senior roles (e.g., MSP Staffing, WhatsApp) offer lower pay than some non-Senior ones (e.g., East River Electric).This suggests that seniority titles alone aren't always tied to pay — employer, location, and job description might weigh more heavily. !! add comment about job location not appearing as a factor as such currently. 
 For an inital inspection, there were genreal insights gained, but a deeper investigation of salary was required to observer/measure degree of influence of Senority, Company and Location have towards salary of data scientist. 
 
+- Average salaries compared to the maximum values inidcates the presense of an outlier. 
+
 3) salaries according to senority of data science job postiion. 
+OUTPUT: 2 row table, few summary stats to observe influence of senoirty 
 
 4) salaries according to location of job role.
 
