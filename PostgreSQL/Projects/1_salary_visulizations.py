@@ -18,7 +18,7 @@ df_top_10_sorted = df_top_10.sort_values(by='salary_year_avg', ascending=False).
 
 print(df_top_10_sorted.shape)
 
-# Create a fake unique index for x-axis (this prevents collapsing)
+# Create a fake unique index for x-axis (prevents collapsing)
 df_top_10_sorted['x_axis'] = [f'Job {i+1}' for i in range(len(df_top_10_sorted))]
 
             # due to Seaborn groups by x + hue and averages the y value if duplicates exist.
