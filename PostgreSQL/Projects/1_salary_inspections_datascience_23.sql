@@ -30,6 +30,7 @@ SELECT
     job_title_short,
     MIN(salary_year_avg) AS min_salary,
     MAX(salary_year_avg) AS max_salary,
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary_year_avg) AS median_salary,
     ROUND(AVG(salary_year_avg),1) AS average_salary,
     COUNT(job_id) AS number_positions
     
@@ -39,10 +40,11 @@ GROUP BY job_title_short;
 -- Salary and Job Availability by Geographic Location
 SELECT
     job_location,
+    ROUND(AVG(salary_year_avg),1) AS average_salary,
     MIN(salary_year_avg) AS min_salary,
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary_year_avg) AS median_salary,
     MAX(salary_year_avg) AS max_salary,
     COUNT(job_id) AS number_of_job_postings,
-    ROUND(AVG(salary_year_avg),1) AS average_salary,
     SUM(CASE
         WHEN job_title_short LIKE '%Senior%' THEN 1
         ELSE 0
@@ -58,6 +60,7 @@ SELECT
     MIN(salary_year_avg) AS min_salary,
     MAX(salary_year_avg) AS max_salary,
     ROUND(AVG(salary_year_avg),1) AS average_salary,
+    PERCENTILE_CONT(0.5) WITHIN GROUP (ORDER BY salary_year_avg) AS median_salary,
     COUNT(job_id) AS number_of_job_postings,
     COUNT(job_location) AS number_of_different_locations,
     SUM(CASE 
